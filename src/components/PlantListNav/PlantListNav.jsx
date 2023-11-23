@@ -1,10 +1,15 @@
 import PlantNavItem from "../PlantNavItem/PlantNavItem";
 
-function PlantListNav({ plants}) {
+function PlantListNav({ plants, updateSelectedPlant }) {
     return (
         <ul>
             {plants.map( (plant) => (
-                <PlantNavItem name={plant.name}/>
+                <PlantNavItem 
+                    updateSelectedPlant={updateSelectedPlant} 
+                    name={plant.name}
+                    id={plant.id}
+                    key={plant.id}
+                />
             ))}
         </ul>
     );

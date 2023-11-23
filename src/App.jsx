@@ -5,7 +5,13 @@ import SelectedPlant from "./components/SelectedPlant/SelectedPlant";
 import PlantListNav from "./components/PlantListNav/PlantListNav";
 
 function App() {
-  const [selectedPlant, setSelectedPlant] = useState(plants[2]);
+  const [selectedPlant, setSelectedPlant] = useState(plants[0]);
+
+  const updateSelectedPlant = (id) => {
+    const foundPlant = plants.find(( plant ) => plant.id === id);
+
+    setSelectedPlant(foundPlant);
+  }
 
   const nonSelectedPlants = plants.filter(( plant ) => {
     return plant.id !== selectedPlant.id
@@ -13,7 +19,9 @@ function App() {
 
   return (
     <div className="app">
-      <PlantListNav className="hello-world" plants={nonSelectedPlants} />
+      <PlantListNav 
+        updateSelectedPlant={updateSelectedPlant} 
+        plants={nonSelectedPlants} />
       <SelectedPlant selectedPlant={selectedPlant}/>
     </div>
   )
